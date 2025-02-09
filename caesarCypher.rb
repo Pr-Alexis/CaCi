@@ -13,6 +13,7 @@ def cypher(message, shift)
   message = message.map{ |letter| 
   # Because fuck you readability
   # I check if input is a character and the shift doesn't overflow
+  # This way i don't have to fuck around with spaces or other interpunctuation
     if ( letter > 64 && letter < 91 && (letter + shift) < 91 ) || ( letter > 96 && letter < 123 && (letter + shift) < 123 ) 
       letter + shift
     elsif ( letter > 64 && letter < 91 ) || ( letter > 96 && letter < 123 ) 
@@ -28,7 +29,9 @@ end
 
 puts "Hello what do you want to cypher?"
 plainPhrase = gets.chomp
-puts cypher(plainPhrase, 1)
+puts "whats the key?"
+key = gets.chomp.to_i
+puts cypher(plainPhrase, key)
 
 
 
